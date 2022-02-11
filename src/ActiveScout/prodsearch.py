@@ -80,6 +80,15 @@ def _list_of_as_products() -> List:
             return f"5.{found_match_str.split(' ')[-1]}"
         return ""
 
+    def get_tcl_version(path_to_file: str) -> str:
+        version_string_re: str = r"package provide \{ActiveTcl.*\} \{.*\}"
+        found_match_str: str = _search_file_for_version_string(
+            path_to_file, version_string_re
+        )
+        if found_match_str:
+            return found_match_str.split("{")[2].split("}")[0]
+        return ""
+
     products: List = []
     products.append(
         ActiveStateProduct(
@@ -123,6 +132,13 @@ def _list_of_as_products() -> List:
             "ActivePerl Mac OSX",
             r"^perl-static$",
             get_version_from_file=get_macosx_perl_version,
+        )
+    )
+    products.append(
+        ActiveStateProduct(
+            "ActiveTcl",
+            r"^init\.tcl$",
+            get_version_from_file=get_tcl_version,
         )
     )
     return products
