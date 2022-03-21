@@ -3,7 +3,7 @@
 An easy to use tool that scans the current system to detect all ActiveState products including Python, Perl, and Tcl.
 
 ### Requirements
-Available via ActiveState Platform Project [ActiveScout](https://platform.activestate.com/ActiveState/ActiveScout) or by locally cloning this repo and running with Python 3.7 and greater (requires `python3 setup.py install` to be run).
+Available via ActiveState Platform Project [ActiveScout](https://platform.activestate.com/ActiveState/ActiveScout) or by locally cloning this repo and running with Python 3.7 and greater (requires `python3 setup.py install` to be run). This will generally work without root/Admin access, but if hidden folders or directories are locked down to root/Admin, then these permissions will be required when running ActiveScout. 
 
 ### Usage
 `activescout -o companyName -m machineTag -l $(pwd)`
